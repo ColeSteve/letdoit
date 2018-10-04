@@ -8,6 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
+	        <!--eureka服务端-->	
 		<module>letdoit-eureka</module>
 	</modules>
 	<parent>
