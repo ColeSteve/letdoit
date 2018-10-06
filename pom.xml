@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.colesteve</groupId>
 	<artifactId>letdoit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<modules>
-	        <!--eureka服务端-->	
-		<module>letdoit-eureka</module>
-	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
-		<relativePath />
+		<relativePath/>
 	</parent>
 
 
@@ -32,7 +26,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+           <groupId>com.zaxxer</groupId>
+           <artifactId>HikariCP</artifactId>
+           </dependency>
+        <dependency>
+		   <groupId>mysql</groupId>
+		   <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -45,13 +51,38 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
+    <modules>
+		<module>letdoit-eureka-server</module>
+        <module>letdoit-eureka-client</module>
+        <module>letdoit-ribbon</module>
+    <module>letdoit-common-api</module>
+    <module>letdoit-service-provider</module>
+    <module>letdoit-service-consumer</module>
+    <module>letdoit-feign</module>
+  </modules>
 	<build>
+	   <resources>
+          <resource>
+             <directory>src/main/resources</directory>
+             <filtering>true</filtering>
+          </resource>
+       </resources>
+	
 		<plugins>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+			</plugin> -->
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                   <delimiters>
+                      <!-- 解析resoure配置文件用$分隔 -->
+                      <delimit>$</delimit>
+                   </delimiters>
+                </configuration>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
