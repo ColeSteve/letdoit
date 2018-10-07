@@ -1,0 +1,24 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: letdoit-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/  
+  instance:
+    instance-id: letdoit-zuul #该配置使得注册到eureka-server当中的服务显示主机名称
+    prefer-ip-address: true  #该配置使得从eureka-server页面访问该服务时，显示具体的主机IP
+#添加网关路由配置
+#http://localhost:8087/letdoit-service-provider/book/get/1
+#http://localhost:8087/letdoit-zuul/book/get/1
+zuul:
+  ignored-services:
+  - letdoit-service-provider #忽略的服务实例名称，设置后不能通过加实例名称前缀进行访问
+  routes:
+    #路由的服务实例名称
+    book.serviceId:  letdoit-service-provider
+    #通过网关访问服务实例的路径
+    book.path: /letdoit-zuul/**

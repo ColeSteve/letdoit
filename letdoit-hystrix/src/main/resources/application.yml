@@ -32,3 +32,12 @@ mybatis:
   type-aliases-package: com.colesteve.letdoit.common.api.entities
   mapper-locations:
   - classpath:mybatis/mapper/**/*.xml 
+#由于springboot2.X使用了endpoint,访问hystrix.stream需要增加以下配置，默认使用actuator/hystrix.stream进行访问
+#如果不想使用前缀actuator，可以在以下修改
+management:
+  endpoints:
+    web:
+      base-path: / ##修改访问路径  2.0之前默认是/   2.0默认是 /actuator
+      exposure:
+        #开放指定页面节点。默认开启health、info。'*'开启所有
+        include: ["health","info","hystrix.stream"] 

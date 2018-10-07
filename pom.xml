@@ -60,7 +60,9 @@
     <module>letdoit-service-consumer</module>
     <module>letdoit-feign</module>
     <module>letdoit-hystrix</module>
-    </modules>
+    <module>letdoit-hystrix-dashboard</module>
+    <module>letdoit-zuul</module>
+  </modules>
 	<build>
 	   <resources>
           <resource>

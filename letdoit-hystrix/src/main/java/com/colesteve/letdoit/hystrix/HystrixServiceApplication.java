@@ -3,6 +3,7 @@ package com.colesteve.letdoit.hystrix;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
@@ -10,6 +11,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 //添加熔断器注解
 @EnableCircuitBreaker
+@EnableDiscoveryClient
 public class HystrixServiceApplication {
 
 	public static void main(String[] args) {

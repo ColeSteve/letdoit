@@ -14,7 +14,8 @@ import com.colesteve.letdoit.common.api.service.fallbackFactory.BookServiceFallb
  * @author colesteve
  * @decription
  *   FeignClient注释接口 ,参数value是注册到eureka服务中的服务实例名称
- *   fallbackFactory:指定统一的异常处理方法
+ *   fallbackFactory:指定统一的异常处理方法。
+ *                   该方式可以达到辅助服务降级的效果，如果服务提供端down掉，也会提示约定的信息，不会出现耗死服务器的情况
  */
 @FeignClient(value="LETDOIT-SERVICE-PROVIDER",fallbackFactory=BookServiceFallbackFactory.class)
 public interface BookService {
