@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 9003
 spring:
   application:
     name: letdoit-service-provider
@@ -29,6 +29,6 @@ info:
 
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.letdoit.common.api.entities
+  type-aliases-package: com.colesteve.letdoit.common.api.entities
   mapper-locations:
   - classpath:mybatis/mapper/**/*.xml 

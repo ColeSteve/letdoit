@@ -59,7 +59,8 @@
     <module>letdoit-service-provider</module>
     <module>letdoit-service-consumer</module>
     <module>letdoit-feign</module>
-  </modules>
+    <module>letdoit-hystrix</module>
+    </modules>
 	<build>
 	   <resources>
           <resource>

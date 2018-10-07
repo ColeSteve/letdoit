@@ -18,6 +18,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+	   <dependency>
+			<groupId>com.colesteve</groupId>
+			<artifactId>letdoit-common-api</artifactId>
+			<version>${project.version}</version>
+       </dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

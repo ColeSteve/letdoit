@@ -6,4 +6,4 @@ eureka:
       defaultZone: http://localhost:8081/eureka/
 spring:
   application:
-    name: ribbon
+    name: letdoit-ribbon
