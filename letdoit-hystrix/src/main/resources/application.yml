@@ -1,0 +1,34 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: letdoit-service-provider
+  #配置Hikari数据源
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/ledoit-test1?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      pool-name: pool-xlx
+      maximum-pool-size: 50
+      minimum-idle: 10
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+  instance:
+    instance-id: letdoit-service-provider #该配置使得注册到eureka-server当中的服务显示主机名称
+    prefer-ip-address: true  #该配置使得从eureka-server页面访问该服务时，显示具体的主机IP
+#增加info信息，从eureka-server页面点击访问该服务时，显示以下具体信息
+info:
+  application.name: letdoit-service-provider-hystrix
+  author: colesteve
+  build.version: $project.version$ #‘$’该符号作为占位符，从pom配置文件中读取相关信息
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.colesteve.letdoit.common.api.entities
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml 
